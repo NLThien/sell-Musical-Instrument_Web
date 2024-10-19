@@ -26,10 +26,10 @@ kiểm tra commit: git log
 kiểm tra commit trên nhánh cụ thể: git log <tên branch> VD: git log main/someone1
 
 tạo branch:
-git branch <tên-branch>
+git branch -b <tên-branch>
 
 Chuyển qua branch đó(lệnh commit được dùng cho branch đó luôn)
-git checkout -b <tên-branch>
+git checkout <tên-branch>
 
 sau khi sửa file trên nhánh:
 *đưa code vào hàng chờ(staging area[chưa có thay đổi trên nhánh chính]):
@@ -45,3 +45,7 @@ Commit code: git commit -m <lời nhắn>
 
 Đưa commit lên repository: git push (đưa lên remote hiện tại (check bằng git remote -v))
 Đưa commit lên branch cụ thể: git push -u origin <tên branch>
+
+Cách pull code từ main về branch:
+*hiện đang làm việc tại nhánh cần làm: git checkout <tên nhánh>
+git pull origin main | áp dụng khi lấy code từ nhánh khác về git pull origin <tên nhánh cần lấy>
