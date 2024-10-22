@@ -5,12 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Music Store</title>
         <link rel="stylesheet" href="../css/home.css">
+
     </head>
 
     <body>
         <header>
-            <h1>Music Store</h1>
         </header>
+
+        <div id="headerContainer"></div>
 
         <main>
             <div class="product">
@@ -28,12 +30,24 @@
                 <p>Price: $500</p>
                 <button onclick="buyNow()">Buy Now</button>
             </div>
+            
+            <div id="footerContainer"></div>
         </main>
-    <footer>
-        <p>&copy; 2024 Music Store</p>
-    </footer>
 
-    <script src="script.js"></script>
+    <script>
+        fetch('footer.html')  //hàm fetch giúp chèn 1 file html khác vào
+            .then(response => response.text())
+            .then(data => { // đọc nội dung của file
+                document.getElementById('footerContainer').innerHTML = data;
+                document.body.appendChild(footer);
+            });
 
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('headerContainer').innerHTML = data;
+                document.body.appendChild(header)
+            });
+    </script>
     </body>
 </html>

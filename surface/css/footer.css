@@ -1,0 +1,49 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: black;
+  color: white;
+  text-align: center;
+  left: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.textFooter {
+  text-align: center;
+}
+
+.fa {
+  padding: 30px;
+  font-size: 0px;
+  width: 100%;
+  text-align: right;
+  text-decoration: none;
+  margin: 30px 7px;
+  border-radius: 20%;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
