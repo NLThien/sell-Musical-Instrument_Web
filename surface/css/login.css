@@ -20,6 +20,8 @@ body {
 
 .login-container h2 {
     text-align: center;
+    text-shadow: #007bff;
+    font-size: 30px;
 }
 
 .login-form {
@@ -28,6 +30,7 @@ body {
 
 .form-group {
     margin-bottom: 15px;
+    margin-right: 15px;
 }
 
 .form-group label {
@@ -39,15 +42,21 @@ body {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-.form-group button {
+.form-end button {
+    margin-top: 10px;
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.form-end:hover {
+    display: block;
+    filter: drop-shadow(0 0 5px purple);
 }
