@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Not thing</title>
+    </head>
+    
+    <body>
+        <h1>
+            Don't have anything yet!
+        </h1>
+        
+    <script>
+        fetch('../../connect/connectMySqlDB.php')
+            .then(response => response.json())
+            .then(data => {
+                const customerList = document.getElementById('customerList');
+                data.forEach(customer => {
+                    const li = document.createElement('li');
+                    li.textContent = `${customer.customer_name} - ${customer.email}`;
+                    customerList.appendChild(li);
+                });
+            })
+        .catch(error => console.error('Error:', error));
+    </script>    
+        
+    </body>
+</html>

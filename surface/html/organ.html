@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bán Đàn Organ</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('products.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('productContainer');
+                    if (data.length > 0) {
+                        data.forEach(product => {
+                            const productCard = document.createElement('div');
+                            productCard.className = 'product-card';
+                            productCard.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}">
+                                <h3>${product.name}</h3>
+                                <p>Giá: ${new Intl.NumberFormat('vi-VN').format(product.price)} VNĐ</p>
+                            `;
+                            container.appendChild(productCard);
+                        });
+                    } else {
+                        container.innerHTML = '< <p>Không có sản phẩm nào để hiển thị.</p>';
+                    }
+                })
+                .catch(error => console.error('Lỗi:', error));
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Trang Bán Đàn Organ</h1>
+    </header>
+    <div class="container" id="productContainer"></div>
+
+</body>
+</html>
