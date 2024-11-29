@@ -1,24 +1,28 @@
-// Hàm kiểm tra thông tin đăng nhập
 function checkLogin() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
-    // Gửi yêu cầu kiểm tra thông tin đăng nhập đến server
-    // Ở đây bạn có thể sử dụng Ajax để gửi yêu cầu đến file xử lý PHP
-    // Ví dụ: sử dụng XMLHttpRequest hoặc fetch API
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'login.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
-    // Giả sử server trả về kết quả qua biến 'response'
-    var response = true; // Giả sử thông tin đăng nhập đúng
-
-    if (response) {
-        alert('Đăng nhập thành công!');
-        // Redirect hoặc thực hiện các hành động khác sau khi đăng nhập thành công
-    } else {
-        var createAccount = confirm('Tài khoản không tồn tại. Bạn có muốn tạo tài khoản mới không?');
-        if (createAccount) {
-            // Redirect hoặc thực hiện hành động tạo tài khoản mới
-        } else {
-            // Thực hiện các hành động khác khi người dùng từ chối tạo tài khoản mới
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                if (data.role === 'admin') {
+                    window.location.href = 'dashBoardAmin.html'; // Chuyển hướng đến trang admin
+                } else if (data.role === 'customer') {
+                    window.location.href = 'main.html'; // Chuyển hướng đến trang main
+                } else {
+                    alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.');
+                }
+            } else {
+                console.error('Lỗi trong quá trình xử lý yêu cầu.');
+            }
         }
-    }
+    };
+
+    var requestBody = JSON.stringify({ username: username, password: password });
+    xhr.send(requestBody);
 }
